@@ -1,0 +1,249 @@
+
+<!-- IPM -->
+
+<!doctype html>  
+
+<html>
+	<head>
+		<title>IPM</title>
+		<meta charset='utf-8'>
+		<link rel="stylesheet" type="text/css" href="./css/reset.css">
+		<link rel="stylesheet" type="text/css" href="./css/style.css">
+		<script src="./src/script.js"></script>
+	</head>
+
+	<header>
+		<div>
+			<a href="https://tecnico.ulisboa.pt/">
+				<img id="logo" src="media/IST_A_RGB_NEG.png" style="width:180px" align="right">
+			</a>
+		<div>
+	</header>
+	
+	<body onload="home()">
+		<a name="top"></a>
+
+		<nav>
+			<div>
+				<ul>
+				<li><a></a></li>
+				<li><a></a></li>
+				<li><a onclick="back()">Return</a></li>
+				<li><a onclick="home()">Home</a></li>
+				<li><a onclick="load('Friend')">Add Friend</a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<section>
+			<div id="Title"></div>
+
+			<div class="under page iRave">
+				<ul>
+					<li><a onclick="load('Agenda')">Agenda</a></li>
+				</ul>
+			</div>
+
+			<div class="under page Agenda">
+				<ul>
+					<li><a onclick="load('13/04')">13/04</a></li>
+					<li><a onclick="load('14/04')">14/04</a></li>
+					<li><a onclick="load('15/04')">15/04</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 13/04 14/04 15/04">
+				<ul>
+					<li><a onclick="load('Stages')">Stages</a></li>
+					<li><a onclick="load('Hour')">Hour</a></li>
+					<li><a onclick="load('Artists')">Artists</a></li>
+				</ul>
+			</div>
+
+			<div class="under page Stages">
+				<ul>
+					<li><a onclick="load('NOS')">NOS</a></li>
+					<li><a onclick="load('Sunset')">Sunset</a></li>
+					<li><a onclick="load('Heineken')">Heineken</a></li>
+					<li><a onclick="load('Mundo')">Mundo</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 13/04_Hour">
+				<ul>
+					<li><a onclick="load('00:00')">00:00-00:59</a></li>
+					<li><a onclick="load('18:00')">18:00-18:59</a></li>
+					<li><a onclick="load('19:00')">19:00-19:59</a></li>
+					<li><a onclick="load('20:00')">20:00-20:59</a></li>
+					<li><a onclick="load('21:00')">21:00-21:59</a></li>
+					<li><a onclick="load('22:00')">22:00-22:59</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 14/04_Hour">
+				<ul>
+					<li><a onclick="load('00:00')">00:00-00:59</a></li>
+					<li><a onclick="load('18:00')">18:00-18:59</a></li>
+					<li><a onclick="load('19:00')">19:00-19:59</a></li>
+					<li><a onclick="load('20:00')">20:00-20:59</a></li>
+					<li><a onclick="load('21:00')">21:00-21:59</a></li>
+					<li><a onclick="load('22:00')">22:00-22:59</a></li>
+					<li><a onclick="load('23:00')">23:00-23:59</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 15/04_Hour">
+				<ul>
+					<li><a onclick="load('00:00')">00:00-00:59</a></li>
+					<li><a onclick="load('01:00')">01:00-01:59</a></li>
+					<li><a onclick="load('18:00')">18:00-18:59</a></li>
+					<li><a onclick="load('19:00')">19:00-19:59</a></li>
+					<li><a onclick="load('20:00')">20:00-20:59</a></li>
+					<li><a onclick="load('21:00')">21:00-21:59</a></li>
+					<li><a onclick="load('22:00')">22:00-22:59</a></li>
+					<li><a onclick="load('23:00')">23:00-23:59</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 13/04_Artists">
+				<ul>
+					<li><a onclick="load('Awolnation')"> Awolnation</a></li>
+					<li><a onclick="load('Daughtry')">   Daughtry</a></li>
+					<li><a onclick="load('LMFAO')">      LMFAO</a></li>
+					<li><a onclick="load('Metronomy')">  Metronomy</a></li>
+					<li><a onclick="load('Muse')">       Muse</a></li>
+					<li><a onclick="load('Paramore')">   Paramore</a></li>
+					<li><a onclick="load('R.E.M.')">     R.E.M.</a></li>
+					<li><a onclick="load('Rihana')">     Rihana</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 14/04_Artists">
+				<ul>
+					<li><a onclick="load('Brodinsky')">   Brodinsky</a></li>
+					<li><a onclick="load('Deftones')">    Deftones</a></li>
+					<li><a onclick="load('DragonForce')"> DragonForce</a></li>
+					<li><a onclick="load('Flume')">       Flume</a></li>
+					<li><a onclick="load('Interpol')">    Interpol</a></li>
+					<li><a onclick="load('Magic!')">      Magic!</a></li>
+					<li><a onclick="load('Mastodon')">    Mastodon</a></li>
+					<li><a onclick="load('MGMT')">        MGMT</a></li>
+					<li><a onclick="load('Radiohead')">   Radiohead</a></li>
+					<li><a onclick="load('Sheppard')">    Sheppard</a></li>
+				</ul>
+			</div>
+
+			<div class="under page 15/04_Artists">
+				<ul>
+					<li><a onclick="load('Curve')">         Curve</a></li>
+					<li><a onclick="load('DragonForce')">   DragonForce</a></li>
+					<li><a onclick="load('Gluecifer')">     Gluecifer</a></li>
+					<li><a onclick="load('Hyper')">         Hyper</a></li>
+					<li><a onclick="load('Nirvana')">       Nirvana</a></li>
+					<li><a onclick="load('Pendulum')">      Pendulum</a></li>
+					<li><a onclick="load('Slipknot')">      Slipknot</a></li>
+					<li><a onclick="load('Spiritualized')"> Spiritualized</a></li>
+					<li><a onclick="load('Wolfmother')">    Wolfmother</a></li>
+				</ul>
+			</div>
+
+			<div class="page 13/04_NOS">
+				<ul>
+					<li><a>Muse       00:15</a></li>
+					<li><a>LMFAO      19:30</a></li>
+					<li><a>Awolnation 22:30</a></li>
+				</ul>
+			</div>
+
+			<div class="page 13/04_Sunset">
+				<ul>
+					<li><a>Paramore  00:25</a></li>
+					<li><a>Metronomy 20:30</a></li>
+				</ul>
+			</div>
+
+			<div class="page 13/04_Heineken">
+				<ul>
+					<li><a>R.E.M.   19:45</a></li>
+					<li><a>Daughtry 22:00</a></li>
+				</ul>
+			</div>
+
+			<div class="page 13/04_Mundo">
+				<ul>
+					<li><a>Rihana 21:25</a></li>
+				</ul>
+			</div>
+
+
+			<div class="page 14/04_NOS">
+				<ul>
+					<li><a>Brodinsky 00:30</a></li>
+					<li><a>Deftones  19:45</a></li>
+					<li><a>Magic!    21:35</a></li>
+					<li><a>Mastodon  23:10</a></li>
+				</ul>
+			</div>
+
+			<div class="page 14/04_Sunset">
+				<ul>
+					<li><a>Radiohead   00:30</a></li>
+					<li><a>DragonForce 19:40</a></li>
+					<li><a>MGMT        21:00</a></li>
+				</ul>
+			</div>
+
+			<div class="page 14/04_Heineken">
+				<ul>
+					<li><a>Sheppard 20:20</a></li>
+					<li><a>Interpol 23:00</a></li>
+				</ul>
+			</div>
+
+			<div class="page 14/04_Mundo">
+				<ul>
+					<li><a>Flume 00:35</a></li>
+				</ul>
+			</div>
+
+
+			<div class="page 15/04_NOS">
+				<ul>
+					<li><a>Curve    00:20</a></li>
+					<li><a>Pendulum 20:50</a></li>
+					<li><a>Slipknot 23:00</a></li>
+				</ul>
+			</div>
+
+			<div class="page 15/04_Sunset">
+				<ul>
+					<li><a>Wolfmother 00:30</a></li>
+					<li><a>Hyper      21:15</a></li>
+				</ul>
+			</div>
+
+			<div class="page 15/04_Heineken">
+				<ul>
+					<li><a>Spiritualized 00:10</a></li>
+					<li><a>DragonForce   23:35</a></li>
+				</ul>
+			</div>
+
+			<div class="page 15/04_Mundo">
+				<ul>
+					<li><a>Gluecifer 21:25</a></li>
+					<li><a>Nirvana   23:20</a></li>
+				</ul>
+			</div>
+
+		</section>
+
+	</body>
+			
+	<footer>
+		<div>
+			<a href="#top">back to the top</a>
+		</div>		
+	</footer>
+
+</html>
