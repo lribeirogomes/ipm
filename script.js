@@ -71,9 +71,5 @@ function load(page) {
     index += 1;
 
     // print selected div
-    if (index === 5) {
-        refresh(stack.join('_'));
-    } else {
-        refresh(page);
-    }
+    refresh(page);
 }
