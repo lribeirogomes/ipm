@@ -28,7 +28,11 @@ function refresh(page) {
 
     if (index == 4 && stack[3] != "Stages") {
 		page = stack[2] + "_" + stack[3];
-	}
+    }
+
+    if (index == 5) {
+		page = stack[2] + "_" + stack[4];
+    }
 
     // print selected div
     list = document.getElementsByClassName(page);
