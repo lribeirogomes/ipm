@@ -12,27 +12,22 @@ function refresh(page) {
     }
 
     switch (index) {
-    case 3:
-        title = stack[2];
-        break;
-    case 4:
-        title = stack[2] + " > " + stack[index - 1];
-        break;
-    case 5:
-        title = stack[2] + " > " + stack[index - 1];
+    case 1:
+        title = page;
         break;
     default:
-        title = page;
+        title = stack[index - 2] + " > " + stack[index - 1];
+        break;
     }
     document.getElementById('Title').innerHTML = "<h2>" + title + "</h2>";
 
     if (index == 4 && stack[3] != "Stages") {
 		page = stack[2] + "_" + stack[3];
-    }
+	}
 
     if (index == 5) {
 		page = stack[2] + "_" + stack[4];
-    }
+	}
 
     // print selected div
     list = document.getElementsByClassName(page);
@@ -56,15 +51,15 @@ function back() {
 
 function home() {
     index = 1;
-    stack = ["Home"];
-    refresh("Home");
+    stack = ["iRave"];
+    refresh("iRave");
     return;
 }
 
-function day() {
+function agenda() {
     index = 2;
-    stack = ["Home","Day"];
-    refresh("Day");
+    stack = ["iRave","Agenda"];
+    refresh("Agenda");
     return;
 }
 
