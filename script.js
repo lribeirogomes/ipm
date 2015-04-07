@@ -26,7 +26,7 @@ function refresh(page) {
     }
     document.getElementById('Title').innerHTML = "<h2>" + title + "</h2>";
 
-    if (index == 4 && stack[2] != "Stages") {
+    if (index == 4 && stack[3] != "Stages") {
 		page = stack[2] + "_" + stack[3];
 	}
 
