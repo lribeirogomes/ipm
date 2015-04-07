@@ -56,7 +56,7 @@ function load(page) {
 
     // print selected div
     if (index === 3) {
-        refresh(stack.join('_') + " " + stack[0] + "_" + stack[2] + "_" + stack[1]);
+        refresh(stack.join('_'));
     } else {
         refresh(page);
     }
