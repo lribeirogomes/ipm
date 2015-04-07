@@ -12,22 +12,22 @@ function refresh(page) {
     }
 
     switch (index) {
-    case 0:
-        title = page;
+    case 3:
+        title = stack[2];
         break;
-    case 1:
-        title = page;
+    case 4:
+        title = stack[2] + " > " + stack[index - 1];
         break;
-    case 2:
-        title = stack[1];
+    case 5:
+        title = stack[2] + " > " + stack[index - 1];
         break;
     default:
-        title = stack[1] + " > " + stack[index - 1];
+        title = page;
     }
     document.getElementById('Title').innerHTML = "<h2>" + title + "</h2>";
 
-    if (index == 3 && stack[1] != "Stages") {
-		page = stack[1] + "_" + stack[2];
+    if (index == 4 && stack[2] != "Stages") {
+		page = stack[2] + "_" + stack[3];
 	}
 
     // print selected div
@@ -40,8 +40,7 @@ function refresh(page) {
 function back() {
     "use strict";
     // return home
-    if (index === 0) {
-        refresh("Home");
+    if (index === 1) {
         return;
     }
 
@@ -51,29 +50,28 @@ function back() {
     refresh(stack[index - 1]);
 }
 
+function home() {
+    index = 1;
+    stack = ["Home"];
+    refresh("Home");
+    return;
+}
+
+function day() {
+    index = 2;
+    stack = ["Home","Day"];
+    refresh("Day");
+    return;
+}
+
 function load(page) {
     "use strict";
-    // clean index
-    if (page === "Home") {
-        index = 0;
-        stack = [];
-        refresh(page);
-        return;
-    }
-    
-    if (page === "Day") {
-        index = 1;
-        stack = [page];
-        refresh(page);
-        return;
-    }
-
     // save value into stack
     stack[index] = page;
     index += 1;
 
     // print selected div
-    if (index === 4) {
+    if (index === 5) {
         refresh(stack.join('_'));
     } else {
         refresh(page);
