@@ -16,12 +16,19 @@ function refresh(page) {
         title = page;
         break;
     case 1:
-        title = stack[0];
+        title = page;
+        break;
+    case 2:
+        title = stack[1];
         break;
     default:
-        title = stack[0] + " > " + stack[index - 1];
+        title = stack[1] + " > " + stack[index - 1];
     }
     document.getElementById('Title').innerHTML = "<h2>" + title + "</h2>";
+
+    if (index == 3 && stack[1] != "Stages") {
+		page = stack[1] + "_" + stack[2];
+	}
 
     // print selected div
     list = document.getElementsByClassName(page);
@@ -32,20 +39,31 @@ function refresh(page) {
 
 function back() {
     "use strict";
+    // return home
     if (index === 0) {
+        refresh("Home");
         return;
     }
 
     // return to previous div
     index -= 1;
-    refresh(stack[index]);
+    stack.splice(index,1);
+    refresh(stack[index - 1]);
 }
 
 function load(page) {
     "use strict";
     // clean index
-    if (page === "Home" || page === "Day") {
+    if (page === "Home") {
         index = 0;
+        stack = [];
+        refresh(page);
+        return;
+    }
+    
+    if (page === "Day") {
+        index = 1;
+        stack = [page];
         refresh(page);
         return;
     }
@@ -55,7 +73,7 @@ function load(page) {
     index += 1;
 
     // print selected div
-    if (index === 3) {
+    if (index === 4) {
         refresh(stack.join('_'));
     } else {
         refresh(page);
