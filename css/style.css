@@ -1,157 +1,165 @@
 
-/* Background */
-header,footer { background-color: rgb(40, 40, 40) }
-nav           { background-color: rgb(20, 20, 20) }
-body          { background-color: rgb(100, 100, 100) }
-aside         { background-color: rgb(200, 200, 200) }
-
-/* Font */
-h1,h2,h3,h4,a,p    { font-family: "KlavikaRegularPlain",Arial,Helvetica,sans-serif }
-
-h1		{ font-size: 150%; color: lightgrey; }
-h2		{ font-size: 125%; color: white; }
-a		{ line-height: 175%; }
-h1		{ line-height: 300%; }
-h2		{ line-height: 200%; }
-h3, p	{ line-height: 125%; color: black; }
-
-body, nav a	{ color: #000000 }
-footer a    { color: #ffffff }
-p           { text-indent: 50px }
-
-nav li a:hover {background-color: #7c7e8f }
-
-/* Position and Size */
-#logo {
-	position: fixed; 
-	top: -15px; 
-	left: -10px;
-}
-
+/************** General ***************/
 body {
-	min-width: 100%;
-	min-height: 100%;
+	background-color: rgb(100, 100, 100);
 }
 
-header, nav, section, footer { width: 100% }
 
-header, nav, footer { position: fixed }
-
-nav li a {
-	margin: 1px;
-	border: 1px solid rgb(200, 200, 200);
-	width: 120px;
-	height: 30px;
-	text-decoration: none;
-	color: white;
-	background-color: rgb(100,110,140);
-	text-align: center;
-	float: left;
+li {
+    border-bottom: 1px solid black;
+	line-height: 0.8cm;
+    padding-left: 0.1cm;	/*0.2*/
+	
+	font-size: 0.4cm;
 }
+
 
 ul {
-	list-style-type: none;
-	margin-left: auto;
-	margin-right: auto;
+    margin: 0cm;
+    padding-left: 0cm;
+    list-style-type: none;
 }
 
-section	{
-	height: auto;
-	padding: 185px 30px 30px 60px;
-	position: auto;
+
+p {
+    margin: 0cm;
+    padding-bottom: 0.1cm;
+	line-height: 0.3cm;
+    font-size: 0.3cm;
 }
 
-header {
-	height: 95px;
-}
 
-nav {
-	top: 95px;
-	height: 35px;
-}
-				  
-footer {
-	bottom: 0px;
-	height: 30px;
-	padding-left: 30px;
-}
 
-.images	{
-	height: 50px;
-	width:  50px;
-}
-				  
-.js	{
-	display: none;
-}
-
-article {
-	background-color: white;
-
-	height:           3cm;
-	width:            2.5cm;
-
+/**************** IDs *****************/
+#iRave {
 	position: fixed;
-}
-
-article header {
-	height: 0.5cm;
-	width:  2.5cm;
-
-    line-height: 0.5cm;
-	text-indent: 0.1cm;
-}
-
-article section {
-	top:      25cm;
-
-	height:   2.25cm;
-	width:    2.5cm;
-
-	padding:  0px 0px 0px 0px;
-
-	overflow: auto;
-}
-
-article footer {
-
-
-	height: 0.25cm;
-	width:  2.5cm;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	
-	background-color: green;
+	height: 9.6cm;
+	width: 12cm;
+
+    background-image: url("../media/background.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
-article .under li:hover, article .full li:hover {
-	background-color: #dcdeef;
+
+#screen {
+    position: inherit;
+    top: 3.35cm;
+    left: 4.75cm;
+
+	height: 3cm;
+	width: 2.5cm;
 }
 
-article div > ul > li {
-	background-color: white;
 
-	border-bottom:    1px solid black;
+#bar {
+    height: 0.5cm;
+	width: 2.5cm;
 
-	text-indent:      0.1cm;
-	line-height:      0.7cm;
+    background-color: rgb(40, 40, 40);
 }
 
-article .under li {
-	height:           0.72cm;
-	width:            2.1cm;
+
+#bar_text {
+    margin-top: 0cm;
+    margin-left: 0.1cm;
+
+    color: white;
+    font-family: Arial;
+	font-size: 0.3cm;
+	line-height: 0.5cm;
 }
 
-article .full li {
-	height:           0.72cm;
-	width:            2.5cm;
+
+#display {
+    position: fixed;
+    height: 2.5cm;
+	width: 2.5cm;
+
+    background-color: white;
+
+    font-family: Arial;
+    font-size: 0.4cm;
+	
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
-article li a {
-	color:            black;
-	font-size:        0.3cm;
-	text-decoration:  none;
+
+#home {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-image: url('../media/home.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
 
-article h4 {
-	color:       white;
-	font-size:   0.3cm;
+
+#home_button {
+    position: inherit;
+	top: 6.525cm;
+	left: 5.525cm;
+
+	height: 0.525cm;
+	width: 1cm;
 }
+
+
+#return_button {
+    position: inherit;
+	top: 6.525cm;
+	left: 4.57cm;
+
+	height: 0.5cm;
+	width: 0.9cm;
+}
+
+
+#icon {
+	height: 0.7cm;
+	width: 0.7cm;
+	
+	vertical-align: middle;
+}
+
+
+
+/*************** Scroll Bar ******************/
+
+::-webkit-scrollbar {
+    width: 1mm;
+}
+ 
+::-webkit-scrollbar-track {
+	background: rgb(240, 240, 240);
+	border-radius: 1px rgb(0, 0, 0);
+	-webkit-box-shadow: inset 0 0 6px rgb(200, 200, 200); 
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgb(150, 150, 150);
+	border-radius: 1px;
+	-webkit-box-shadow: inset 0 0 6px rgb(0, 0, 0); 
+}
+
+
+
+/********** no select on mouse drag **********/
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+
+

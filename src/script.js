@@ -1,19 +1,20 @@
+
 var index = 0;
 var stack = [];
 
 function refresh(page) {
     "use strict";
     // clean all div's
-    var list = document.getElementsByClassName("page"),
-        i,
-        title;
-    for (i = 0; i < list.length; i += 1) {
+    var list = document.getElementsByClassName("page")
+    var i, title;
+
+    for (i = 0; i < list.length; i++) {
         list[i].style.display = "none";
     }
 
     switch (index) {
     case 1:
-        title = page;
+        title = stack[index - 1];
         break;
     default:
         title = stack[index - 2] + " > " + stack[index - 1];
@@ -22,7 +23,7 @@ function refresh(page) {
     if (index >= 4) {
 		page = stack[2] + "_" + stack[index - 1];
 	}
-    document.getElementById('Title').innerHTML = "<h4>" + title + "</h4>";
+    document.getElementById("bar").innerHTML = "<h4 id='bar_text'>" + title + "</h4>";
 
     // print selected div
     list = document.getElementsByClassName(page);
@@ -30,6 +31,7 @@ function refresh(page) {
         list[i].style.display = "block";
     }
 }
+
 
 function back() {
     "use strict";
@@ -43,12 +45,14 @@ function back() {
     refresh(stack[index - 1]);
 }
 
+
 function home() {
     index = 1;
     stack = ["iRave"];
     refresh("iRave");
     return;
 }
+
 
 function load(page) {
     "use strict";
@@ -59,6 +63,7 @@ function load(page) {
     // print selected div
     refresh(page);
 }
+
 
 function GetChar(e) {
 	  e = e || event
@@ -74,3 +79,50 @@ function GetChar(e) {
 	    return false;
 	  }
 }
+
+/********************************************************/
+
+
+$('.load_Palcos').click(function() {
+	
+	load("Palcos");
+	
+});
+
+
+/*
+$('.load_Palcos').click(function() {
+	
+	$(document).ready(function(){
+
+		load('Palcos');
+		
+	});
+	
+});
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
