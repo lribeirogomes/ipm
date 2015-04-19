@@ -11,6 +11,16 @@ li {
     padding-left: 0.1cm;	/*0.2*/
 	
 	font-size: 0.4cm;
+	
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+.option2 {
+		height: 1.23cm;
+		line-height: 1.23cm;
 }
 
 
@@ -22,10 +32,29 @@ ul {
 
 
 p {
-    margin: 0cm;
-    padding-bottom: 0.1cm;
+    margin: 0cm 0cm 0.1cm 0cm;	/* t r b l */
+	padding: 0cm 0cm 0cm 0cm;	/* t r b l */
+	
 	line-height: 0.3cm;
     font-size: 0.3cm;
+	
+	text-align: center;
+}
+
+
+.top {
+    position: absolute;
+	top: 0.2cm;
+	
+	width: 2.5cm;
+}
+
+
+.bottom {
+    position: absolute;
+	bottom: 0.15cm;
+	
+	width: 2.5cm;
 }
 
 
@@ -53,6 +82,66 @@ p {
 
 	height: 3cm;
 	width: 2.5cm;
+    background-color: rgb(60, 60, 60);
+	
+	cursor: pointer;
+}
+
+
+#clock {
+    position: absolute;
+    top: 0.4cm;
+    left: 0cm;
+
+    height: 1.1cm;
+	width: 2.5cm;
+
+	padding: 0px 0px 0px 0px;
+		
+	line-height: 1.1cm;
+	text-align: center;
+	
+	color: white;
+	font-family: 'Arial Narrow', Arial, sans-serif;
+	font-size: 1.1cm;
+}
+
+
+#sec {
+    position: absolute;
+    top: 1.5cm;
+    right: 0cm;
+
+    height: 0.5cm;
+	width: 2.5cm;
+
+	padding: 0px 0.3cm 0px 0px;
+		
+	line-height: 0.5cm;
+	text-align: right;
+	
+	color: white;
+	font-family: 'Arial Narrow', Arial, sans-serif;
+	font-size: 0.4cm;
+}
+
+
+#date {
+    position: absolute;
+    top: 2.1cm;
+    left: 0cm;
+
+	height: 0.5cm;
+	width: 2.5cm;
+
+	padding: 0px 0px 0px 0px;
+	
+	line-height: 0.5cm;
+	text-align: center;
+	
+	color: white;
+	font-family: Arial;
+	font-size: 0.3cm;
 }
 
 
@@ -61,6 +150,7 @@ p {
 	width: 2.5cm;
 
     background-color: rgb(40, 40, 40);
+	z-index: 6;
 }
 
 
@@ -87,6 +177,8 @@ p {
 	
 	overflow-y: auto;
 	overflow-x: hidden;
+	
+	z-index: 6;
 }
 
 
@@ -100,14 +192,68 @@ p {
 }
 
 
-#home_button {
-    position: inherit;
-	top: 6.525cm;
-	left: 5.525cm;
-
-	height: 0.525cm;
-	width: 1cm;
+#instructions {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-image: url('../media/fistbump.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
+
+
+#noFound {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-image: url('../media/foreveralone.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+
+#alreadyAdded {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-image: url('../media/alreadyadded.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+
+#confirm {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-image: url('../media/confirm.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+
+#compass {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-image: url('../media/tracking/0.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+
+#heatmap_1, #heatmap_2, #heatmap_3, #heatmap_4 {
+    height: 2.5cm;
+	width: 2.5cm;
+	
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#heatmap_1 { background-image: url('../media/capacity/stage1.png'); }
+#heatmap_2 { background-image: url('../media/capacity/stage2.png'); }
+#heatmap_3 { background-image: url('../media/capacity/stage3.png'); }
+#heatmap_4 { background-image: url('../media/capacity/stage4.png'); }
 
 
 #return_button {
@@ -117,16 +263,53 @@ p {
 
 	height: 0.5cm;
 	width: 0.9cm;
+
+	cursor: pointer;
 }
 
 
-#icon {
+#home_button {
+    position: inherit;
+	top: 6.525cm;
+	left: 5.525cm;
+
+	height: 0.525cm;
+	width: 1cm;
+	
+	cursor: pointer;
+}
+
+
+#lock_button {
+    position: inherit;
+	top: 6.525cm;
+	left: 6.625cm;
+
+	height: 0.5cm;
+	width: 0.9cm;
+	
+	cursor: pointer;
+}
+
+
+/**************** Classes *****************/
+
+.icon {
 	height: 0.7cm;
 	width: 0.7cm;
 	
 	vertical-align: middle;
 }
 
+
+.icon2 {
+	margin: 0px 0px 0px 0px;
+
+	height: 0.9cm;
+	width: 0.9cm;
+	
+	vertical-align: middle;
+}
 
 
 /*************** Scroll Bar ******************/

@@ -2,493 +2,869 @@
 <!doctype html>  
 
 <html>
+
 	<head>
+			<script>
+				console.log("----- iRave 3.5 -----");
+			</script>
 	
-		<title>iRave 1.8</title>
+		<title>iRave 3.5 </title>
 		<meta charset='utf-8'>
 		
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 		
-		<script src="./src/jquery.js"></script>
-		<script src="./src/script.js"></script>
+		<script src="./src/system.js"></script>
+		<script src="./src/lockscreen.js"></script>
+		<script src="./src/himym.js"></script>
 		
 	</head>
 	
-    <body onload="home()" onKeyDown="GetChar(event)">
-	
-    <!-- iRave -->
-    <div id="iRave">
+	<body onload="home(); timer(); lock();" onKeyDown="GetChar(event);">
+			
+		<!-- iRave -->
+		<div id="iRave">
 
-        <!-- Screen -->
-        <div id="screen">
+			<!-- Screen -->
+			<div id="screen">
+			
+				<!-- Clock -->
+				<div id="clock">12:34</div>
+				
+				<!-- Seconds -->
+				<div id="sec">:56</div>
+				
+				<!-- Date -->
+				<div id="date">Mon, April 20th</div>
 
-            <!-- Bar -->
-            <div id="bar"></div>
+				<!-- Bar -->
+				<div id="bar"></div>
 
-            <!-- Page -->
-            <div id="display">
+				<!-- Page -->
+				<div id="display">
+					<script src="./src/drag.js"></script>
 
-				 <div id="home" class="page iRave">
+					 <div id="home" class="page iRave">
+						
+						<img src ="./media/hack_home.png" hspace="2" vspace="0"
+								usemap="#home_map">
+						
+						<map name="home_map">
+						
+							<area shape="poly" coords="0,0, 45,46, 90,0" onClick="verifyClick('Find')">
+										
+							<area shape="poly" coords="45,46, 90,90, 90,0" onClick="verifyClick('Poster')">
+										
+							<area shape="poly" coords="0,90, 90,90, 45,46" onClick="verifyClick('Options')">
+										
+							<area shape="poly" coords="0,0, 0,90, 45,46" onClick="verifyClick('Info')">
+										
+						</map>
+						
+					</div>
+
+                    <!----------------------------------- Find --------------------------------------->
+
+                    <div class="page iRave_Find">
+                        <ul>
+
+                            <li class='option2' onclick=" showFriends(); verifyClick('Friends');">
+                                <img class="icon2" src=".\media\icons\icon_friends.png">
+                                Friends
+                            </li>
+
+                            <li class='option2' onclick="verifyClick('Staff')">
+								<img class="icon2" src=".\media\icons\icon_staff.png">
+								Staff
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!----------Friends---------->
+
+					<div id="instructions" class="page Instructions">
+						<script>
+							document.getElementById("instructions").addEventListener('click',
+								function () {	verifyClick('Add');
+													friendRequest(); });
+						</script>
 					
-					<img src ="./media/hack.png" alt="home" usemap="#home_map"
-								hspace="2" vspace="0">
+						<p class='top'>Fist bump</p>
+						<p class='bottom'>to add friend</p>
+					</div>
 					
-					<map name="home_map">
-						<area	alt="Agenda"
-									shape="poly"
-									coords="45,46, 90,90, 90,0"
-									onClick="load('Agenda')"
-									style="background: solid rgb(100, 100, 100);">
-									
-					</map>
+					<div id="alreadyAdded" class="page AlreadyAdded">
+						<script>
+							document.getElementById("alreadyAdded").addEventListener('click',
+								function () {	back(); });
+						</script>
+						
+						<p class="top">Friend already added</p>
+						<p class="bottom">click to return</p>
+					</div>
 					
+					<div id="noFound" class="page Found0">
+						<script>
+							document.getElementById("noFound").addEventListener('click', 
+								function () {	back(); });
+						</script>
+						
+						<p class="top">Noone found</p>
+						<p class="bottom">click to return</p>
+					</div>
+					
+
+					
+					
+                    <div id="friend_list" class="page Find_Friends"> </div>
+
+                    <div id="friend_options" class="page Friends_Options"> </div>
+
+                    <!--confirm : add or remove-->
+                    <div id="confirm" class="page Friends_Add Options_Remove"> </div>
+					
+                    <!-- radar-->
+                    <div id="compass" class="page Options_Tracking"> </div>
+					
+					<!-- radar-->
+                    <div id="0found" class="page Options_Tracking"> </div>
+					
+					
+
+
+                    <!----------Staff---------->
+
+                    <div class="page Find_Staff">
+                        <ul>
+
+                            <li class='option2' onclick="verifyClick('Medic')">
+                                <img class="icon2" src=".\media\icons\icon_medic.png">
+                                Medic
+                            </li>
+
+                            <li class='option2' onclick="verifyClick('Security')">
+                                <img class="icon2" src=".\media\icons\icon_security.png">
+                                Security
+                            </li>
+
+                        </ul>
+                    </div>
+					
+					<!-- radar-->
+                    <div id="compass" class="page Staff_Medic"> </div>
+                    <div id="compass" class="page Staff_Security"> </div>
+					
+
+					<!----------------------------------- Info --------------------------------------->
+
+					<div class="page iRave_Info">
+						<ul>
+
+							<li class='option2' onclick="verifyClick('Stages')">
+								<img class="icon2" src=".\media\icons\icon_stage.png">
+								Stages
+							</li>
+
+							<li class='option2' onclick="verifyClick('Stands')">
+								<img class="icon2" src=".\media\icons\icon_stand.png">
+								Stands
+							</li>
+
+						</ul>
+					</div>
+
+                    <!--Stages-->
+
+                    <div class="page Info_Stages">
+                        <ul>
+                            <li onclick="verifyClick('NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...')">Heineken</li>
+                            <li onclick="verifyClick('Mundo')">Mundo</li>
+                        </ul>
+                    </div>
+
+					<div id="heatmap_1" class="page Stages_NOS"> </div>
+
+					<div id="heatmap_2" class="page Stages_Sunset"> </div>
+
+					<div id="heatmap_3" class="page Stages_Hei..."> </div>
+
+					<div id="heatmap_4" class="page Stages_Mundo"> </div>
+
+                    <!--Stands-->
+
+                    <div class="page Info_Stands">
+                        <ul>
+
+                            <li onclick="verifyClick('Food')">
+                                <img class="icon" src=".\media\icons\icon_food.png">
+                                Food
+                            </li>
+
+                            <li onclick="verifyClick('Drinks')">
+                                <img class="icon" src=".\media\icons\icon_drinks.png">
+                                Drinks
+                            </li>
+
+                            <li onclick="verifyClick('Fun')">
+                                <img class="icon" src=".\media\icons\icon_fun.png">
+                                Fun
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!--Food-->
+
+					<div class="page Stands_Food">
+						<ul>
+							<li onclick="verifyClick('Chippers')">Chippers</li>
+							<li onclick="verifyClick('KFC')">KFC</li>
+							<li onclick="verifyClick('McDon...')">McDonalds</li>
+						</ul>
+					</div>
+
+					<div class="page Food_Chippers Food_KFC Food_McDon...">
+						<ul>
+							<li onclick="verifyClick('Menu')">Menu</li>
+							<li onclick="verifyClick('Time')">Waiting Time</li>
+							<li onclick="verifyClick('Find')">Find</li>
+						</ul>
+					</div>
+
+					<div class="page Chippers_Menu">
+						<ul>
+							<li>Fries<p>2€</p></li>
+						</ul>
+					</div>
+
+                    <div class="page Chippers_Time">
+                        <ul>
+                            <li>Waiting Time<p>5min</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Chippers_Find">
+                        <img class="icon" src=".\media\icons\icon_stage.png">
+                    </div>
+
+                    <div class="page KFC_Menu">
+                        <ul>
+                            <li>Burger<p>2,5€</p></li>
+                            <li>Burger+Fries<p>6€</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page KFC_Time">
+                        <ul>
+                            <li>Waiting Time<p>5min</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page KFC_Find">
+                        <img class="icon" src=".\media\icons\icon_stage.png">
+                    </div>
+
+                    <div class="page McDon..._Menu">
+                        <ul>
+                            <li>Hamburger<p>1€</p></li>
+                            <li>Cheeseburger<p>1,25€</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page McDon..._Time">
+                        <ul>
+                            <li>Waiting Time<p>5min</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page McDon..._Find">
+                        <img class="icon" src=".\media\icons\icon_stage.png">
+                    </div>
+
+                    <div class="page Stands_Food">
+                        <ul>
+                            <li onclick="verifyClick('Chippers')">Chippers</li>
+                            <li onclick="verifyClick('KFC')">KFC</li>
+                            <li onclick="verifyClick('McDon...')">McDonalds</li>
+                        </ul>
+                    </div>
+
+                    <!--Drinks-->
+
+                    <div class="page Stands_Drinks">
+                        <ul>
+                            <li onclick="verifyClick('Redbull')">Redbull</li>
+                            <li onclick="verifyClick('Sumol')">Sumol</li>
+                            <li onclick="verifyClick('Pepsi')">Pepsi</li>
+                        </ul>
+                    </div>
+
+                    <div class="page Drinks_Redbull Drinks_Sumol Drinks_Pepsi">
+                        <ul>
+                            <li onclick="verifyClick('Menu')">Menu</li>
+                            <li onclick="verifyClick('Time')">Waiting Time</li>
+                            <li onclick="verifyClick('Find')">Find</li>
+                        </ul>
+                    </div>
+
+                    <div class="page Redbull_Menu">
+                        <ul>
+                            <li>Redbull<p>2€</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Redbull_Time">
+                        <ul>
+                            <li>Waiting Time<p>5min</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Redbull_Find">
+                        <img class="icon" src=".\media\icons\icon_stage.png">
+                    </div>
+
+                    <div class="page Sumol_Menu">
+                        <ul>
+                            <li>Sumol<p>2€</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Sumol_Time">
+                        <ul>
+                            <li>Waiting Time<p>5min</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Sumol_Find">
+                        <img class="icon" src=".\media\icons\icon_stage.png">
+                    </div>
+
+                    <div class="page Pepsi_Menu">
+                        <ul>
+                            <li>Pepsi<p>1,5€</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Pepsi_Time">
+                        <ul>
+                            <li>Waiting Time<p>5min</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Pepsi_Find">
+                        <img class="icon" src=".\media\icons\icon_stage.png">
+                    </div>
+
+                    <!--Fun-->
+
+                    <div class="page Stands_Fun">
+                        <ul>
+                            <li onclick="verifyClick('Wall...')">Wall Climb</li>
+                            <li onclick="verifyClick('Bumper...')">Bumper Cars</li>
+                       </ul>
+                    </div>
+
+                    <div class="page Fun_Wall...">
+                        <ul>
+                            <li>Entry<p>Free</p></li>
+                            <li>Restrictions<p>12 or older</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Fun_Bumper...">
+                        <ul>
+                            <li>Entry<p>Free</p></li>
+                            <li>Restrictions<p>6 or older</p></li>
+                        </ul>
+                    </div>
+
+					<!---------------------------------- Poster -------------------------------------->
+
+					<div class="page iRave_Poster">
+					  <ul>
+							<li onclick="verifyClick('Today')">Today</li>
+							<li onclick="verifyClick('14/04')">14/04</li>
+							<li onclick="verifyClick('15/04')">15/04</li>
+						</ul>
+					</div>
+
+                    <div class="page Poster_Today Poster_14/04 Poster_15/04">
+                        <ul>
+
+                            <li onclick="verifyClick('Stages')">
+                                <img class="icon" src=".\media\icons\icon_stage.png">
+                                Stages
+                            </li>
+
+                            <li onclick="verifyClick('Time')">
+                                <img class="icon" src=".\media\icons\icon_hours.png">
+                                Time
+                            </li>
+
+                            <li onclick="verifyClick('Artists')">
+                                <img class="icon" src=".\media\icons\icon_artists.png">
+                                Artists
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <!----------By Stage---------->
+
+                    <!--Today-->
+
+                    <div class="page Today_Stages">
+                        <ul>
+                            <li onclick="verifyClick('NOS', 'Today_NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset', 'Today_Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...', 'Today_Hei...')">Heineken</li>
+                            <li onclick="verifyClick('Mundo', 'Today_Mundo')">Mundo</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page Today_NOS">
+                        <ul>
+                            <li>LMFAO<p>19:30</p></li>
+                            <li>Awolnation<p>22:30</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_Sunset">
+                        <ul>
+                            <li>Metronomy<p>20:30</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_Hei...">
+                        <ul>
+                            <li>R.E.M.<p>19:45</p></li>
+                            <li>Daughtry<p>22:00</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_Mundo">
+                        <ul>
+                            <li>Rihanna<p>21:25</p></li>
+                        </ul>
+                    </div>
+
+                    <!--14/04-->
+
+                    <div class="page 14/04_Stages">
+                        <ul>
+                            <li onclick="verifyClick('NOS', '14/04_NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset', '14/04_Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...', '14/04_Hei...')">Heineken</li>
+                            <li onclick="verifyClick('Mundo', '14/04_Mundo')">Mundo</li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_NOS">
+                        <ul>
+                            <li>Brodinsky<p>00:30</p></li>
+                            <li>Deftones<p>19:45</p></li>
+                            <li>Magic!<p>21:35</p></li>
+                            <li>Mastodon<p>23:10</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_Sunset">
+                        <ul>
+                            <li>Radioheah<p>00:30</p></li>
+                            <li>DragonForce<p>19:40</p></li>
+                            <li>MGMT<p>21:00</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_Hei...">
+                        <ul>
+                            <li>Sheppard<p>20:20</p></li>
+                            <li>Interpol<p>23:00</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_Mundo">
+                        <ul>
+                            <li>Flume<p>00:35</p></li>
+                        </ul>
+                    </div>
+
+                    <!--15/04-->
+
+                    <div class="page 15/04_Stages">
+                        <ul>
+                            <li onclick="verifyClick('NOS', '15/04_NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset', '15/04_Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...', '15/04_Hei...')">Heineken</li>
+                            <li onclick="verifyClick('Mundo', '15/04_Mundo')">Mundo</li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_NOS">
+                        <ul>
+                            <li>Curve<p>00:20</p></li>
+                            <li>Pendulum<p>20:50</p></li>
+                            <li>Slipknot<p>23:00</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_Sunset">
+                        <ul>
+                            <li>Wolfmother<p>00:30</p></li>
+                            <li>Hyper<p>21:15</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_Hei...">
+                        <ul>
+                            <li>Spiritualized<p>00:10</p></li>
+                            <li>DragonForce<p>23:35</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_Mundo">
+                        <ul>
+                            <li>Gluecifer<p>21:25</p></li>
+                            <li>Nirvana<p>23:20</p></li>
+                        </ul>
+                    </div>
+
+                    <!----------By Time---------->
+
+                    <!--Today-->
+
+                    <div class="page Today_Time">
+                        <ul>
+                            <li onclick="verifyClick('19:00', 'Today_19:00')">19:00-19:59</li>
+                            <li onclick="verifyClick('20:00', 'Today_20:00')">20:00-20:59</li>
+                            <li onclick="verifyClick('21:00', 'Today_21:00')">21:00-21:59</li>
+                            <li onclick="verifyClick('22:00', 'Today_22:00')">22:00-22:59</li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_19:00">
+                        <ul>
+                            <li>LMFAO<p>19:30 NOS</p></li>
+                            <li>R.E.M.<p>19:45 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_20:00">
+                        <ul>
+                            <li>Metronomy<p>20:30 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_22:00">
+                        <ul>
+                            <li>Daughtry<p>22:00 Heineken</p></li>
+                            <li>Awolnation<p>22:30 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Today_21:00">
+                        <ul>
+                            <li>Rihanna<p>21:25 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <!--14/04-->
+
+                    <div class="page 14/04_Time">
+                        <ul>
+                            <li onclick="verifyClick('19:00', '14/04_19:00')">19:00-19:59</li>
+                            <li onclick="verifyClick('20:00', '14/04_20:00')">20:00-20:59</li>
+                            <li onclick="verifyClick('21:00', '14/04_21:00')">21:00-21:59</li>
+                            <li onclick="verifyClick('23:00', '14/04_23:00')">23:00-23:59</li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_19:00">
+                        <ul>
+                            <li>DragonForce<p>19:40 Sunset</p></li>
+                            <li>Deftones<p>19:45 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_20:00">
+                        <ul>
+                            <li>Sheppard<p>20:20 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_21:00">
+                        <ul>
+                            <li>MGMT<p>21:00 Sunset</p></li>
+                            <li>Magic!<p>21:35 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_23:00">
+                        <ul>
+                            <li>Interpol<p>23:00 Heineken</p></li>
+                            <li>Mastodon<p>23:10 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 14/04_00:00">
+                        <ul>
+                            <li>Brodinsky<p>00:30 NOS</p></li>
+                            <li>Radiohead<p>00:30 Sunset</p></li>
+                            <li>Flume<p>00:35 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <!--15/04-->
+
+                    <div class="page 15/04_Time">
+                        <ul>
+                            <li onclick="verifyClick('20:00', '15/04_20:00')">20:00-20:59</li>
+                            <li onclick="verifyClick('21:00', '15/04_21:00')">21:00-21:59</li>
+                            <li onclick="verifyClick('23:00', '15/04_23:00')">23:00-23:59</li>
+                            <li onclick="verifyClick('00:00', '15/04_00:00')">00:00-00:59</li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_20:00">
+                        <ul>
+                            <li>Pendulum<p>20:50 NOS</p></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="page 15/04_21:00">
+                        <ul>
+                            <li>Hyper<p>21:15 Sunset</p></li>
+                            <li>Gluecifer<p>21:15 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_23:00">
+                        <ul>
+                            <li>Slipknot<p>23:00 NOS</p></li>
+                            <li>Nirvana<p>23:20 Mundo</p></li>
+                            <li>DragonForce<p>23:35 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page 15/04_00:00">
+                        <ul>
+                            <li>Spiritualized<p>00:10 Heineken</p></li>
+                            <li>Curve<p>00:20 NOS</p></li>
+                            <li>Wolfmother<p>00:30 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <!----------By Artist---------->
+
+                    <!--Today-->
+
+					<div class="page Today_Artists">
+						<ul>
+							<li onclick="verifyClick('Awo...')">Awolnation</li>
+							<li onclick="verifyClick('Dau...')">Daughtry</li>
+							<li onclick="verifyClick('LMFAO')">LMFAO</li>
+							<li onclick="verifyClick('Met...')">Metronomy</li>
+							<li onclick="verifyClick('R.E.M.')">R.E.M.</li>
+							<li onclick="verifyClick('Rihanna')">Rihanna</li>
+						</ul>
+					</div>
+
+                    <div class="page Artists_Awo...">
+                        <ul>
+                            <li>Awolnation<p>22:30 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Dau...">
+                        <ul>
+                            <li>Daughtry<p>22:00 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_LMFAO">
+                        <ul>
+                            <li>LMFAO<p>19:30 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Met...">
+                        <ul>
+                            <li>Metronomy<p>20:30 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_R.E.M.">
+                        <ul>
+                            <li>R.E.M.<p>19:45 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Rihanna">
+                        <ul>
+                            <li>Rihanna<p>21:25 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <!--14/04-->
+
+					<div class="page 14/04_Artists">
+						<ul>
+							<li onclick="verifyClick('Bro...')">Brodinsky</li>
+							<li onclick="verifyClick('Def...')">Deftones</li>
+							<li onclick="verifyClick('Dra...')">DragonForce</li>
+							<li onclick="verifyClick('Flume')">Flume</li>
+							<li onclick="verifyClick('Int...')">Interpol</li>
+							<li onclick="verifyClick('Magic!')">Magic!</li>
+							<li onclick="verifyClick('Mas...')">Mastodon</li>
+							<li onclick="verifyClick('MGMT')">MGMT</li>
+							<li onclick="verifyClick('Rad...')">Radiohead</li>
+							<li onclick="verifyClick('She...')">Sheppard</li>
+						</ul>
+					</div>
+
+                    <div class="page Artists_Bro...">
+                        <ul>
+                            <li>Brodinsky<p>00:30 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Def...">
+                        <ul>
+                            <li>Deftones<p>19:45 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Dra...">
+                        <ul>
+                            <li>DragonForce<p>19:40 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Flume">
+                        <ul>
+                            <li>Flume<p>00:35 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Int...">
+                        <ul>
+                            <li>Interpol<p>23:00 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Magic!">
+                        <ul>
+                            <li>Magic!<p>21:35 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Mas...">
+                        <ul>
+                            <li>Mastodon<p>23:10 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_MGMT">
+                        <ul>
+                            <li>MGMT<p>21:00 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Rad...">
+                        <ul>
+                            <li>Radiohead<p>00:30 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_She...">
+                        <ul>
+                            <li>Sheppard<p>20:20 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <!--15/04-->
+
+					<div class="page 15/04_Artists">
+						<ul>
+							<li onclick="verifyClick('Curve')">Curve</li>
+							<li onclick="verifyClick('Dra...')">DragonForce</li>
+							<li onclick="verifyClick('Glu...')">Gluecifer</li>
+							<li onclick="verifyClick('Hyper')">Hyper</li>
+							<li onclick="verifyClick('Nir...')">Nirvana</li>
+							<li onclick="verifyClick('Pen...')">Pendulum</li>
+							<li onclick="verifyClick('Sli...')">Slipknot</li>
+							<li onclick="verifyClick('Spi...')">Spiritualized</li>
+							<li onclick="verifyClick('Wol...')">Wolfmother</li>
+						</ul>
+					</div>
+
+                    <div class="page Artists_Curve">
+                        <ul>
+                            <li>Curve<p>00:20 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Dra...">
+                        <ul>
+                            <li>DragonForce<p>23:35 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Glu...">
+                        <ul>
+                            <li>Gluecifer<p>21:15 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Hyper">
+                        <ul>
+                            <li>Hyper<p>21:15 Sunset</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Nir...">
+                        <ul>
+                            <li>Nirvana<p>23:20 Mundo</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Pen...">
+                        <ul>
+                            <li>Pendulum<p>20:50 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Sli...">
+                        <ul>
+                            <li>Slipknot<p>23:00 NOS</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Spi...">
+                        <ul>
+                            <li>Spiritualized<p>00:10 Heineken</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Artists_Wol...">
+                        <ul>
+                            <li>Wolfmother<p>00:30 Sunset</p></li>
+                        </ul>
+                    </div>
+
 				</div>
 
-                <div class="page Agenda">
-                  <ul>
-                        <li onclick="load('Hoje')">Hoje</li>
-                        <li onclick="load('14/04')">14/04</li>
-                        <li onclick="load('15/04')">15/04</li>
-                    </ul>
-                </div>
+			</div>
 
-                <div class="page Hoje 14/04 15/04">
-                    <ul>
-					
-                        <li onclick="load('Palcos')">
-							<img id="icon" src=".\media\icons\icon_stage.png" alt="stages">
-							Palcos
-						</li>
+			<!-- fisical buttons -->
+			<div id="home_button" onclick="home()"></div>
+			<div id="return_button" onclick="back()"></div>
+            <div id="lock_button" onclick="lock()"></div>
 
-                        <li onclick="load('Hora')">
-							<img id="icon" src=".\media\icons\icon_hours.png" alt="hours">
-							Hora
-						</li>
-						
-                        <li onclick="load('Art...')">
-							<img id="icon" src=".\media\icons\icon_artists.png" alt="artists">
-							Artistas
-						</li>
-						
-                    </ul>
-                </div>
+		</div>
 
-
-                <div class="page Hoje_Palcos 14/04_Palcos 15/04_Palcos">
-                    <ul>
-                        <li onclick="load('NOS')">NOS</li>
-                        <li onclick="load('Sunset')">Sunset</li>
-                        <li onclick="load('Hei...')">Heineken</li>
-                        <li onclick="load('Mundo')">Mundo</li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Hora">
-                    <ul>
-                        <li onclick="load('19:00')">19:00-19:59</li>
-                        <li onclick="load('20:00')">20:00-20:59</li>
-                        <li onclick="load('21:00')">21:00-21:59</li>
-                        <li onclick="load('22:00')">22:00-22:59</li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_19:00">
-                    <ul>
-                        <li>LMFAO<p>19:30 NOS</p></li>
-                        <li>R.E.M.<p>19:45 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_20:00">
-                    <ul>
-                        <li>Metronomy<p>20:30 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_21:00">
-                    <ul>
-                        <li>Rihanna<p>21:25 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_22:00">
-                    <ul>
-                        <li>Daughtry<p>22:00 Heineken</p></li>
-                        <li>Awolnation<p>22:30 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Hora">
-                    <ul>
-                        <li onclick="load('00:00')">00:00-00:59</li>
-                        <li onclick="load('19:00')">19:00-19:59</li>
-                        <li onclick="load('20:00')">20:00-20:59</li>
-                        <li onclick="load('21:00')">21:00-21:59</li>
-                        <li onclick="load('23:00')">23:00-23:59</li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_00:00">
-                    <ul>
-                        <li>Brodinsky<p>00:30 NOS</p></li>
-                        <li>Radiohead<p>00:30 Sunset</p></li>
-                        <li>Flume<p>00:35 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_19:00">
-                    <ul>
-                        <li>DragonForce<p>19:40 Sunset</p></li>
-                        <li>Deftones<p>19:45 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_20:00">
-                    <ul>
-                        <li>Sheppard<p>20:20 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_21:00">
-                    <ul>
-                        <li>MGMT<p>21:00 Sunset</p></li>
-                        <li>Magic!<p>21:35 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_23:00">
-                    <ul>
-                        <li>Interpol<p>23:00 Heineken</p></li>
-                        <li>Mastodon<p>23:10 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Hora">
-                    <ul>
-                        <li onclick="load('00:00')">00:00-00:59</li>
-                        <li onclick="load('20:00')">20:00-20:59</li>
-                        <li onclick="load('21:00')">21:00-21:59</li>
-                        <li onclick="load('23:00')">23:00-23:59</li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_00:00">
-                    <ul>
-                        <li>Spiritualized<p>00:10 Heineken</p></li>
-                        <li>Curve<p>00:20 NOS</p></li>
-                        <li>Wolfmother<p>00:30 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_20:00">
-                    <ul>
-                        <li>Pendulum<p>20:50 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_21:00">
-                    <ul>
-                        <li>Hyper<p>21:15 Sunset</p></li>
-                        <li>Gluecifer<p>21:15 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_23:00">
-                    <ul>
-                        <li>Slipknot<p>23:00 NOS</p></li>
-                        <li>Nirvana<p>23:20 Mundo</p></li>
-                        <li>DragonForce<p>23:35 Heineken</p></li>
-                    </ul>
-                </div>
-
-
-                <div class="page Hoje_Art...">
-                    <ul>
-                        <li onclick="load('Awo...')">Awolnation</li>
-                        <li onclick="load('Dau...')">Daughtry</li>
-                        <li onclick="load('LMFAO')">LMFAO</li>
-                        <li onclick="load('Met...')">Metronomy</li>
-                        <li onclick="load('R.E.M.')">R.E.M.</li>
-                        <li onclick="load('Rihanna')">Rihanna</li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Awo...">
-                    <ul>
-                        <li>Awolnation<p>22:30 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Dau...">
-                    <ul>
-                        <li>Daughtry<p>22:00 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_LMFAO">
-                    <ul>
-                        <li>LMFAO<p>19:30 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Met...">
-                    <ul>
-                        <li>Metronomy<p>20:30 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_R.E.M.">
-                    <ul>
-                        <li>R.E.M.<p>19:45 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Rihanna">
-                    <ul>
-                        <li>Rihanna<p>21:25 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Art...">
-                    <ul>
-                        <li onclick="load('Bro...')">Brodinsky</li>
-                        <li onclick="load('Def...')">Deftones</li>
-                        <li onclick="load('Dra...')">DragonForce</li>
-                        <li onclick="load('Flume')">Flume</li>
-                        <li onclick="load('Int...')">Interpol</li>
-                        <li onclick="load('Magic!')">Magic!</li>
-                        <li onclick="load('Mas...')">Mastodon</li>
-                        <li onclick="load('MGMT')">MGMT</li>
-                        <li onclick="load('Rad...')">Radiohead</li>
-                        <li onclick="load('She...')">Sheppard</li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Bro...">
-                    <ul>
-                        <li>Brodinsky<p>00:30 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Def...">
-                    <ul>
-                        <li>Deftones<p>19:45 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Dra...">
-                    <ul>
-                        <li>DragonForce<p>19:40 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Flume">
-                    <ul>
-                        <li>Flume<p>00:35 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Int...">
-                    <ul>
-                        <li>Interpol<p>23:00 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Magic!">
-                    <ul>
-                        <li>Magic!<p>21:35 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Mas...">
-                    <ul>
-                        <li>Mastodon<p>23:10 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_MGMT">
-                    <ul>
-                        <li>MGMT<p>21:00 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Rad...">
-                    <ul>
-                        <li>Radiohead<p>00:30 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_She...">
-                    <ul>
-                        <li>Sheppard<p>20:20 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Art...">
-                    <ul>
-                        <li onclick="load('Curve')">Curve</li>
-                        <li onclick="load('Dra...')">DragonForce</li>
-                        <li onclick="load('Glu...')">Gluecifer</li>
-                        <li onclick="load('Hyper')">Hyper</li>
-                        <li onclick="load('Nir...')">Nirvana</li>
-                        <li onclick="load('Pen...')">Pendulum</li>
-                        <li onclick="load('Sli...')">Slipknot</li>
-                        <li onclick="load('Spi...')">Spiritualized</li>
-                        <li onclick="load('Wol...')">Wolfmother</li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Curve">
-                    <ul>
-                        <li>Curve<p>00:20 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Dra...">
-                    <ul>
-                        <li>DragonForce<p>23:35 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Glu...">
-                    <ul>
-                        <li>Gluecifer<p>21:15 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Hyper">
-                    <ul>
-                        <li>Hyper<p>21:15 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Nir...">
-                    <ul>
-                        <li>Nirvana<p>23:20 Mundo</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Pen...">
-                    <ul>
-                        <li>Pendulum<p>20:50 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Sli...">
-                    <ul>
-                        <li>Slipknot<p>23:00 NOS</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Spi...">
-                    <ul>
-                        <li>Spiritualized<p>00:10 Heineken</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Wol...">
-                    <ul>
-                        <li>Wolfmother<p>00:30 Sunset</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_NOS">
-                    <ul>
-                        <li>LMFAO<p>19:30</p></li>
-                        <li>Awolnation<p>22:30</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Sunset">
-                    <ul>
-                        <li>Metronomy<p>20:30</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Hei...">
-                    <ul>
-                        <li>R.E.M.<p>19:45</p></li>
-                        <li>Daughtry<p>22:00</p></li>
-                    </ul>
-                </div>
-
-                <div class="page Hoje_Mundo">
-                    <ul>
-                        <li>Rihanna<p>21:25</p></li>
-                    </ul>
-                </div>
-
-
-                <div class="page 14/04_NOS">
-                    <ul>
-                        <li>Brodinsky<p>00:30</p></li>
-                        <li>Deftones<p>19:45</p></li>
-                        <li>Magic!<p>21:35</p></li>
-                        <li>Mastodon<p>23:10</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Sunset">
-                    <ul>
-                        <li>Radioheah<p>00:30</p></li>
-                        <li>DragonForce<p>19:40</p></li>
-                        <li>MGMT<p>21:00</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Hei...">
-                    <ul>
-                        <li>Sheppard<p>20:20</p></li>
-                        <li>Interpol<p>23:00</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 14/04_Mundo">
-                    <ul>
-                        <li>Flume<p>00:35</p></li>
-                    </ul>
-                </div>
-
-
-                <div class="page 15/04_NOS">
-                    <ul>
-                        <li>Curve<p>00:20</p></li>
-                        <li>Pendulum<p>20:50</p></li>
-                        <li>Slipknot<p>23:00</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Sunset">
-                    <ul>
-                        <li>Wolfmother<p>00:30</p></li>
-                        <li>Hyper<p>21:15</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Hei...">
-                    <ul>
-                        <li>Spiritualized<p>00:10</p></li>
-                        <li>DragonForce<p>23:35</p></li>
-                    </ul>
-                </div>
-
-                <div class="page 15/04_Mundo">
-                    <ul>
-                        <li>Gluecifer<p>21:25</p></li>
-                        <li>Nirvana<p>23:20</p></li>
-                    </ul>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- fisical buttons -->
-        <div id="home_button" onclick="home()"></div>
-        <div id="return_button" onclick="back()"></div>
-
-    </div>
-
-</body>
+	</body>
 
 </html>

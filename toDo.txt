@@ -1,0 +1,23 @@
+	
+	- add friends : (doing that now)
+		
+			- correct positions and images of:
+				- fist bump to add
+				- no one found
+				- already added
+	
+	
+	- online / offline :
+	
+			- 2 screens:
+				- online
+				- offline
+				
+			- change state
+			
+			- grey out 'find' and ignore mouse events when offline
+		
+		
+	- find friends :
+		
+			- find screen (radar), kind of done
