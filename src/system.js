@@ -155,17 +155,7 @@ function alternativeLoad(_page) {
 	
 }
 
-function GetChar(e) {
-	  e = e || event
-	  switch(e.keyCode) {
-	  case 37: // left
-	    back()
-	    return false;
-	  case 39: // right
-      lock()
-	    return false;
-	  case 40: // down
-	    home();
-	    return false;
-	  }
-}
+
+
+
+
