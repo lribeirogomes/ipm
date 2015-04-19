@@ -4,9 +4,9 @@
 <html>
 
 	<head>
-			<script>
-				console.log("----- iRave 3.5 -----");
-			</script>
+		<script>
+			console.log("----- iRave 3.5 -----");
+		</script>
 	
 		<title>iRave 3.5 </title>
 		<meta charset='utf-8'>
@@ -15,11 +15,11 @@
 		
 		<script src="./src/system.js"></script>
 		<script src="./src/lockscreen.js"></script>
-		<script src="./src/himym.js"></script>
+		<script src="./src/friends.js"></script>
 		
 	</head>
 	
-	<body onload="home(); timer(); lock();" onKeyDown="GetChar(event);">
+	<body onload="home(); timer(); lock()" onKeyDown="GetChar(event);">
 			
 		<!-- iRave -->
 		<div id="iRave">
@@ -112,9 +112,7 @@
 						<p class="top">Noone found</p>
 						<p class="bottom">click to return</p>
 					</div>
-					
 
-					
 					
                     <div id="friend_list" class="page Find_Friends"> </div>
 
@@ -417,10 +415,10 @@
 
                     <div class="page Today_Stages">
                         <ul>
-                            <li onclick="verifyClick('NOS', 'Today_NOS')">NOS</li>
-                            <li onclick="verifyClick('Sunset', 'Today_Sunset')">Sunset</li>
-                            <li onclick="verifyClick('Hei...', 'Today_Hei...')">Heineken</li>
-                            <li onclick="verifyClick('Mundo', 'Today_Mundo')">Mundo</li>
+                            <li onclick="verifyClick('NOS', 'Today_NOS'); alternativeLoad('Today_NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset', 'Today_Sunset'); alternativeLoad('Today_Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...', 'Today_Hei...'); alternativeLoad('Today_Hei')">Heineken</li>
+                            <li onclick="verifyClick('Mundo', 'Today_Mundo'); alternativeLoad('Today_Mundo')">Mundo</li>
                         </ul>
                     </div>
                     
@@ -454,10 +452,10 @@
 
                     <div class="page 14/04_Stages">
                         <ul>
-                            <li onclick="verifyClick('NOS', '14/04_NOS')">NOS</li>
-                            <li onclick="verifyClick('Sunset', '14/04_Sunset')">Sunset</li>
-                            <li onclick="verifyClick('Hei...', '14/04_Hei...')">Heineken</li>
-                            <li onclick="verifyClick('Mundo', '14/04_Mundo')">Mundo</li>
+                            <li onclick="verifyClick('NOS', '14/04_NOS'); alternativeLoad('14/04_NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset', '14/04_Sunset'); alternativeLoad('14/04_Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...', '14/04_Hei...'); alternativeLoad('14/04_Hei...')">Heineken</li>
+                            <li onclick="verifyClick('Mundo', '14/04_Mundo'); alternativeLoad('14/04_Mundo')">Mundo</li>
                         </ul>
                     </div>
 
@@ -495,10 +493,10 @@
 
                     <div class="page 15/04_Stages">
                         <ul>
-                            <li onclick="verifyClick('NOS', '15/04_NOS')">NOS</li>
-                            <li onclick="verifyClick('Sunset', '15/04_Sunset')">Sunset</li>
-                            <li onclick="verifyClick('Hei...', '15/04_Hei...')">Heineken</li>
-                            <li onclick="verifyClick('Mundo', '15/04_Mundo')">Mundo</li>
+                            <li onclick="verifyClick('NOS', '15/04_NOS'); alternativeLoad('15/04_NOS')">NOS</li>
+                            <li onclick="verifyClick('Sunset', '15/04_Sunset'); alternativeLoad('15/04_Sunset')">Sunset</li>
+                            <li onclick="verifyClick('Hei...', '15/04_Hei...'); alternativeLoad('15/04_Hei...')">Heineken</li>
+                            <li onclick="verifyClick('Mundo', '15/04_Mundo'); alternativeLoad('15/04_Mundo')">Mundo</li>
                         </ul>
                     </div>
 
@@ -537,10 +535,10 @@
 
                     <div class="page Today_Time">
                         <ul>
-                            <li onclick="verifyClick('19:00', 'Today_19:00')">19:00-19:59</li>
-                            <li onclick="verifyClick('20:00', 'Today_20:00')">20:00-20:59</li>
-                            <li onclick="verifyClick('21:00', 'Today_21:00')">21:00-21:59</li>
-                            <li onclick="verifyClick('22:00', 'Today_22:00')">22:00-22:59</li>
+                            <li onclick="verifyClick('19:00', 'Today_19:00'); alternativeLoad('Today_19:00')">19:00-19:59</li>
+                            <li onclick="verifyClick('20:00', 'Today_20:00'); alternativeLoad('Today_20:00')">20:00-20:59</li>
+                            <li onclick="verifyClick('21:00', 'Today_21:00'); alternativeLoad('Today_21:00')">21:00-21:59</li>
+                            <li onclick="verifyClick('22:00', 'Today_22:00'); alternativeLoad('Today_22:00')">22:00-22:59</li>
                         </ul>
                     </div>
 
@@ -574,10 +572,10 @@
 
                     <div class="page 14/04_Time">
                         <ul>
-                            <li onclick="verifyClick('19:00', '14/04_19:00')">19:00-19:59</li>
-                            <li onclick="verifyClick('20:00', '14/04_20:00')">20:00-20:59</li>
-                            <li onclick="verifyClick('21:00', '14/04_21:00')">21:00-21:59</li>
-                            <li onclick="verifyClick('23:00', '14/04_23:00')">23:00-23:59</li>
+                            <li onclick="verifyClick('19:00', '14/04_19:00'); alternativeLoad('14/04_19:00')">19:00-19:59</li>
+                            <li onclick="verifyClick('20:00', '14/04_20:00'); alternativeLoad('14/04_20:00')">20:00-20:59</li>
+                            <li onclick="verifyClick('21:00', '14/04_21:00'); alternativeLoad('14/04_21:00')">21:00-21:59</li>
+                            <li onclick="verifyClick('23:00', '14/04_23:00'); alternativeLoad('14/04_23:00')">23:00-23:59</li>
                         </ul>
                     </div>
 
@@ -620,10 +618,10 @@
 
                     <div class="page 15/04_Time">
                         <ul>
-                            <li onclick="verifyClick('20:00', '15/04_20:00')">20:00-20:59</li>
-                            <li onclick="verifyClick('21:00', '15/04_21:00')">21:00-21:59</li>
-                            <li onclick="verifyClick('23:00', '15/04_23:00')">23:00-23:59</li>
-                            <li onclick="verifyClick('00:00', '15/04_00:00')">00:00-00:59</li>
+                            <li onclick="verifyClick('20:00', '15/04_20:00'); alternativeLoad('15/04_20:00')">20:00-20:59</li>
+                            <li onclick="verifyClick('21:00', '15/04_21:00'); alternativeLoad('15/04_21:00')">21:00-21:59</li>
+                            <li onclick="verifyClick('23:00', '15/04_23:00'); alternativeLoad('15/04_23:00')">23:00-23:59</li>
+                            <li onclick="verifyClick('00:00', '15/04_00:00'); alternativeLoad('15/04_00:00')">00:00-00:59</li>
                         </ul>
                     </div>
 
@@ -806,11 +804,13 @@
                         </ul>
                     </div>
 
+					<!--
                     <div class="page Artists_Dra...">
                         <ul>
                             <li>DragonForce<p>23:35 Heineken</p></li>
                         </ul>
                     </div>
+					-->
 
                     <div class="page Artists_Glu...">
                         <ul>
