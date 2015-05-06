@@ -5,17 +5,18 @@
 
 	<head>
 		<script>
-			console.log("----- iRave 3.5 -----");
+			console.log("----- iRave 4.1 -----");
 		</script>
 	
-		<title>iRave 3.5 </title>
+		<title>iRave 4.1</title>
 		<meta charset='utf-8'>
 		
-		<link rel="stylesheet" type="text/css" href="./css/style.css">
-		
-		<script src="./src/system.js"></script>
-		<script src="./src/lockscreen.js"></script>
-		<script src="./src/friends.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+
+		<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>		
+		<script src="src/friends.js"></script>
+		<script src="src/lockscreen.js"></script>
+		<script src="src/system.js"></script>
 		
 	</head>
 	
@@ -36,16 +37,19 @@
 				<!-- Date -->
 				<div id="date">Mon, April 20th</div>
 
+				
+				<div id='led'><img src=".\media\green.png"></div>
+				
 				<!-- Bar -->
-				<div id="bar"></div>
+				<div id="bar"> </div>
 
 				<!-- Page -->
 				<div id="display">
-					<script src="./src/drag.js"></script>
+					<script src="src/drag.js"></script>
 
 					 <div id="home" class="page iRave">
 						
-						<img src ="./media/hack_home.png" hspace="2" vspace="0"
+						<img src ="media/hack_home.png" hspace="2" vspace="0"
 								usemap="#home_map">
 						
 						<map name="home_map">
@@ -54,7 +58,7 @@
 										
 							<area shape="poly" coords="45,46, 90,90, 90,0" onClick="verifyClick('Poster')">
 										
-							<area shape="poly" coords="0,90, 90,90, 45,46" onClick="verifyClick('Options')">
+							<area shape="poly" coords="0,90, 90,90, 45,46" onClick="verifyClick('State')">
 										
 							<area shape="poly" coords="0,0, 0,90, 45,46" onClick="verifyClick('Info')">
 										
@@ -62,6 +66,22 @@
 						
 					</div>
 
+					
+					
+                    <!------------------------------- Options ----------------------------------->
+					
+					
+					<div class="page iRave_State">
+                        <ul>
+                            <li id="state" style="color: green">State: Online </li>
+                        </ul>
+						
+						<div id="stateButton" onClick="toggleState()"
+							style="border: 1px solid black"> Go Offline</div>
+						
+                    </div>
+					
+					
                     <!----------------------------------- Find --------------------------------------->
 
                     <div class="page iRave_Find">
@@ -127,8 +147,6 @@
 					<!-- radar-->
                     <div id="0found" class="page Options_Tracking"> </div>
 					
-					
-
 
                     <!----------Staff---------->
 
@@ -243,9 +261,7 @@
                         </ul>
                     </div>
 
-                    <div class="page Chippers_Find">
-                        <img class="icon" src=".\media\icons\icon_stage.png">
-                    </div>
+                    <div id="compass" class="page Chippers_Find"> </div>
 
                     <div class="page KFC_Menu">
                         <ul>
@@ -260,9 +276,7 @@
                         </ul>
                     </div>
 
-                    <div class="page KFC_Find">
-                        <img class="icon" src=".\media\icons\icon_stage.png">
-                    </div>
+                    <div id="compass" class="page KFC_Find"> </div>
 
                     <div class="page McDon..._Menu">
                         <ul>
@@ -277,9 +291,7 @@
                         </ul>
                     </div>
 
-                    <div class="page McDon..._Find">
-                        <img class="icon" src=".\media\icons\icon_stage.png">
-                    </div>
+                    <div id="compass" class="page McDon..._Find"> </div>
 
                     <div class="page Stands_Food">
                         <ul>
@@ -319,9 +331,7 @@
                         </ul>
                     </div>
 
-                    <div class="page Redbull_Find">
-                        <img class="icon" src=".\media\icons\icon_stage.png">
-                    </div>
+                    <div id="compass" class="page Redbull_Find"> </div>
 
                     <div class="page Sumol_Menu">
                         <ul>
@@ -335,9 +345,7 @@
                         </ul>
                     </div>
 
-                    <div class="page Sumol_Find">
-                        <img class="icon" src=".\media\icons\icon_stage.png">
-                    </div>
+                    <div id="compass" class="page Sumol_Find">  </div>
 
                     <div class="page Pepsi_Menu">
                         <ul>
@@ -351,32 +359,54 @@
                         </ul>
                     </div>
 
-                    <div class="page Pepsi_Find">
-                        <img class="icon" src=".\media\icons\icon_stage.png">
-                    </div>
+                    <div id="compass" class="page Pepsi_Find"> </div>
 
                     <!--Fun-->
 
                     <div class="page Stands_Fun">
                         <ul>
                             <li onclick="verifyClick('Wall...')">Wall Climb</li>
-                            <li onclick="verifyClick('Bumper...')">Bumper Cars</li>
+                            <li onclick="verifyClick('Bump...')">Bumper Cars</li>
                        </ul>
                     </div>
 
-                    <div class="page Fun_Wall...">
+                    <div class="page Fun_Wall... Fun_Bump...">
                         <ul>
-                            <li>Entry<p>Free</p></li>
-                            <li>Restrictions<p>12 or older</p></li>
+                            <li onclick="verifyClick('Rest...')">Restrictions</li>
+                            <li onclick="verifyClick('Time')">Waiting Time</li>
+                            <li onclick="verifyClick('Find')">Find</li>
                         </ul>
                     </div>
 
-                    <div class="page Fun_Bumper...">
+                    <div class="page Wall..._Rest...">
                         <ul>
                             <li>Entry<p>Free</p></li>
-                            <li>Restrictions<p>6 or older</p></li>
+                            <li>Age<p>12 or older</p></li>
                         </ul>
                     </div>
+
+                    <div class="page Wall..._Time">
+                        <ul>
+                            <li>Waiting Time<p>10min</p></li>
+                        </ul>
+                    </div>
+
+                    <div id="compass" class="page Wall..._Find">  </div>
+
+                    <div class="page Bump..._Rest...">
+                        <ul>
+                            <li>Entry<p>Free</p></li>
+                            <li>Age<p>6 or older</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page Bump..._Time">
+                        <ul>
+                            <li>Waiting Time<p>15min</p></li>
+                        </ul>
+                    </div>
+
+                    <div id="compass" class="page Bump..._Find"> </div>
 
 					<!---------------------------------- Poster -------------------------------------->
 
@@ -417,7 +447,7 @@
                         <ul>
                             <li onclick="verifyClick('NOS', 'Today_NOS'); alternativeLoad('Today_NOS')">NOS</li>
                             <li onclick="verifyClick('Sunset', 'Today_Sunset'); alternativeLoad('Today_Sunset')">Sunset</li>
-                            <li onclick="verifyClick('Hei...', 'Today_Hei...'); alternativeLoad('Today_Hei')">Heineken</li>
+                            <li onclick="verifyClick('Hei...', 'Today_Hei...'); alternativeLoad('Today_Hei...')">Heineken</li>
                             <li onclick="verifyClick('Mundo', 'Today_Mundo'); alternativeLoad('Today_Mundo')">Mundo</li>
                         </ul>
                     </div>
@@ -787,7 +817,7 @@
 					<div class="page 15/04_Artists">
 						<ul>
 							<li onclick="verifyClick('Curve')">Curve</li>
-							<li onclick="verifyClick('Dra...')">DragonForce</li>
+							<li onclick="verifyClick('Dra...', 'Dra...*')">DragonForce</li>
 							<li onclick="verifyClick('Glu...')">Gluecifer</li>
 							<li onclick="verifyClick('Hyper')">Hyper</li>
 							<li onclick="verifyClick('Nir...')">Nirvana</li>
@@ -804,13 +834,11 @@
                         </ul>
                     </div>
 
-					<!--
-                    <div class="page Artists_Dra...">
+                    <div class="page Artists_Dra...*">
                         <ul>
                             <li>DragonForce<p>23:35 Heineken</p></li>
                         </ul>
                     </div>
-					-->
 
                     <div class="page Artists_Glu...">
                         <ul>
@@ -859,7 +887,7 @@
 			</div>
 
 			<!-- fisical buttons -->
-			<div id="home_button" onclick="home()"></div>
+			<div id="home_button"></div>
 			<div id="return_button" onclick="back()"></div>
             <div id="lock_button" onclick="lock()"></div>
 

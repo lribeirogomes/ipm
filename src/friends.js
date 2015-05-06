@@ -7,13 +7,11 @@ Array.prototype.contains = function(element) {
    return false;
 }
 
-
+var _online = true;
 var friends = [];
-var people = ['', 'Stan Marsh'];
-
-/*, 'Kyle Broflovski', 'Eric Cartman', 'Kenny McCormick', 'Butters Stotch',
-						'Wendy Testaburger', 'Bebe Stevens', 'Linda Stotch'];
-*/
+var people = ['', 'Stan Marsh', 'Kyle Broflovski', 'Eric Cartman', 'Kenny McCormick', 'Butters Stotch',
+						'Bebe Stevens', 'Linda Stotch'];
+						
 						
 function friendRequest() {
 	
@@ -106,11 +104,24 @@ function showFriends() {
 function friendOptions(name) {
 	var str = "<ul>";
 		
-	str += "<li class='option2' onclick="+'"'+"trackingScreen(); verifyClick('Tracking', 'Tracking')"+'"'+"> \
-					<img class='icon2' src='.\\media\\icons\\icon_track.png'> \
+		
+		
+		
+	if (_online) {
+		str += "<li class='option2' onclick="+'"'+"trackingScreen(); verifyClick('Tracking', 'Tracking')"+'"'+"> \
+						<img class='icon2' src='.\\media\\icons\\icon_track.png'> \
 						Find \
-				</li> \
-				<li class='option2' onclick="+'"'+"verifyClick('Delete', 'Remove'); check('"+name+"', 'Remove')"+'"'+"> \
+					</li>"
+	}
+	else {
+		str += "<li class='option2' style='opacity: 0.4; filter: alpha(opacity=40)'> \
+						<img class='icon2' src='.\\media\\icons\\icon_track.png' > \
+						Find \
+					</li>"
+	}		
+				
+	str += "<li class='option2' onclick="+'"'+"verifyClick('Delete', 'Remove'); check('"+name+"', 'Remove')"
+				+'"'+"> \
 					<img class='icon2' src='.\\media\\icons\\icon_remove.png'> \
 						Remove \
 				</li>";
@@ -134,16 +145,33 @@ function trackingScreen() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
+function toggleState() {
+	
+	if (_online === true) {
+		document.getElementById("state").style.color = "black";
+		document.getElementById("state").innerHTML = "State: Offline";
+		
+		document.getElementById("stateButton").style.color = "green";
+		document.getElementById("stateButton").innerHTML = "Go Online";
+		
+		document.getElementById("led").innerHTML = "<img src='./media/grey.png'>";
+		_online = false;
+		
+	}
+	else {
+		document.getElementById("state").style.color = "green";
+		document.getElementById("state").innerHTML = "State: Online";
+		
+		document.getElementById("stateButton").style.color = "black";
+		document.getElementById("stateButton").innerHTML = "Go Offline";
+		
+		document.getElementById("led").innerHTML = "<img src='./media/green.png'>";
+		_online = true;
+	}
+	
+		console.log("state : ", _online);
+		
+}
 
 
 

@@ -31,7 +31,7 @@ function mouseDownHandler(e){
 
 function mouseMoveHandler(e){ 
 	if (mouseDown === true){
-		if ((yPos - e.pageY) < -10 || (yPos - e.pageY) > 10 || (xPos - e.pageX) < -10 || (xPos - e.pageX) > 10) {
+		if ((yPos - e.pageY) < -5 || (yPos - e.pageY) > 5 || (xPos - e.pageX) < -5 || (xPos - e.pageX) > 5) {
 			isDrag = true;
 			target.scrollTop = target.scrollTop + 0.1*(yPos - e.pageY);
 		}

@@ -1,4 +1,3 @@
-
 var locked = false;
 var index = 0;
 var stack = []
@@ -27,7 +26,6 @@ function lock() {
     }
 }
 
-
 function home() {
 	
     if (!locked) {
@@ -45,6 +43,9 @@ function home() {
     }
 }
 
+$(function() {
+	$("#home_button").click(home);
+});
 
 function load(t, p, d) {
 	
@@ -133,27 +134,64 @@ function displayPage() {
 		_list[i].style.display = 'block';
 	}
 	
+	
+	if (_online === true) {
+		document.getElementById("led").innerHTML = "<img src='./media/green.png'>";
+	}
+	else {
+		document.getElementById("led").innerHTML = "<img src='./media/grey.png'>";
+	}
+
 }
 
 
 function alternativeLoad(_page) {
-	var _list = document.getElementsByClassName("page");
-	var i, n, k;
-	
-    for (i = 0; i < _list.length; i++) {
-        _list[i].style.display = "none";
-    }
-	
-	updateTitle();
-	
-	console.log("Alt _page : ", _page);
-	
-	_list = document.getElementsByClassName(_page);
-	for (i = 0; i < _list.length; i += 1) {
-		_list[i].style.display = 'block';
+	if (isDrag === false) {
+		var _list = document.getElementsByClassName("page");
+		var i, n, k;
+		
+		for (i = 0; i < _list.length; i++) {
+			_list[i].style.display = "none";
+		}
+		
+		updateTitle();
+		
+		console.log("Alt _page : ", _page);
+		
+		_list = document.getElementsByClassName(_page);
+		for (i = 0; i < _list.length; i += 1) {
+			_list[i].style.display = 'block';
+		}
 	}
 	
 }
+
+
+function GetChar(e) {
+    e = e || event
+    switch(e.keyCode) {
+        case 37: // left
+            back()
+            return false;
+        case 39: // right
+			lock();
+            return false;
+        case 40: // down
+            home();
+            return false;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
